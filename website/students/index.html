@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MHS Driving School Student Portal - K53 Learning Platform">
+    <meta name="keywords" content="driving school, K53, road signs, south africa, learning">
+    <meta name="author" content="MHS Driving School">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mhsdrivingschool.com/students/">
+    <meta property="og:title" content="MHS Driving School - Student Portal">
+    <meta property="og:description" content="Interactive K53 Road Traffic Signs Learning Platform">
+    <meta property="og:image" content="../images/mhs-logo.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://mhsdrivingschool.com/students/">
+    <meta property="twitter:title" content="MHS Driving School - Student Portal">
+    <meta property="twitter:description" content="Interactive K53 Road Traffic Signs Learning Platform">
+    <meta property="twitter:image" content="../images/mhs-logo.png">
+
+    <title>MHS Driving School - Student Portal</title>
+    <link rel="canonical" href="https://mhsdrivingschool.com/students/">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="../images/mhs-logo.png">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;500;600;700&display=swap" as="style">
+    
+    <style>
+        /* Critical CSS for above-the-fold content */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+        
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .logo-section img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+        
+        .student-app {
+            min-height: calc(100vh - 80px);
+            background: white;
+        }
+        
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 400px;
+            flex-direction: column;
+        }
+        
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin-bottom: 1rem;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <img src="../images/mhs-logo.png" alt="MHS Driving School Logo">
+                <div>
+                    <h1>MHS Driving School</h1>
+                    <p>Student Portal</p>
+                </div>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../about.html">About</a></li>
+                    <li><a href="../courses.html">Courses</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="student-app">
+        <div id="app">
+            <div class="loading">
+                <div class="spinner"></div>
+                <p>Loading MHS Student Portal...</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Import PWA styles and scripts -->
+    <script type="module">
+        // Import and initialize the PWA
+        import('./../../src/index.js');
+    </script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/students/sw.js')
+                    .then((registration) => {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch((registrationError) => {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+    </script>
+
+    <!-- Google Analytics (replace with your tracking ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_TRACKING_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_TRACKING_ID');
+    </script>
+
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "EducationalOrganization",
+        "name": "MHS Driving School",
+        "description": "Professional driving instruction and K53 road traffic signs education",
+        "url": "https://mhsdrivingschool.com",
+        "logo": "https://mhsdrivingschool.com/images/mhs-logo.png",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Stand 10127, R40 Main Road",
+            "addressLocality": "Green Valley",
+            "addressRegion": "Acornhoek",
+            "postalCode": "1360",
+            "addressCountry": "ZA"
+        },
+        "telephone": "+27835550555",
+        "sameAs": [
+            "https://www.facebook.com/mhsdrivingschool",
+            "https://www.instagram.com/mhsdrivingschool"
+        ]
+    }
+    </script>
+</body>
+</html>

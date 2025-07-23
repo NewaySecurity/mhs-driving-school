@@ -28,13 +28,12 @@ jobs:
       
     - name: Copy website files
       run: |
-        mkdir -p dist/website
-        cp -r website/* dist/website/
-        cp -r dist/* dist/website/students/
+        mkdir -p dist
+        cp -r website/* dist/
         
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       if: github.ref == 'refs/heads/main'
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./dist/website
+        publish_dir: ./dist

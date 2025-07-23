@@ -4,12 +4,12 @@ import { getFirestore, doc, setDoc, getDoc } from 'firebase/firestore';
 
 // Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDxLIlmEHvhAkOhBXVQqPkrTlYJHsJ_i-k",
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY || "YOUR_API_KEY_HERE",
   authDomain: "mhs-driving-school.firebaseapp.com",
   projectId: "mhs-driving-school",
   storageBucket: "mhs-driving-school.appspot.com",
   messagingSenderId: "349317560015",
-  appId: "1:349317560015:web:mhs-driving-school"
+  appId: process.env.REACT_APP_FIREBASE_APP_ID || "YOUR_APP_ID_HERE"
 };
 
 // Initialize Firebase
